@@ -106,13 +106,13 @@
             .section {
                 margin-bottom: 40px;
                 color: var(--font-primary-color);
+                font-size: 16px;
             }
             .description {
                 font-size: 13px;
                 color: var(--font-secondary-color);
                 font-weight: normal;
             }
-            #nutriscore {}
 
             table#val-nut {
                 width: 100%;
@@ -148,7 +148,7 @@
                 padding: 8px 0;
             }
         </style>
-        <title></title>
+        <title>${doc.dublincore.title}</title>
     </head>
 
     <body>
@@ -159,8 +159,8 @@
                 <div id="tech-title">
                     <span class="title">Fiche technique</span>
                     <span class="subtitle">${doc.vItemGeneral.code}</span>
-                    <span class="subtitle">Version 1.0+</span>
-                    <span class="subtitle">Date 21/05/2019</span>
+                    <span class="subtitle">Version ${doc.versionLabel}</span>
+                    <span class="subtitle">Modifié le ${doc.dublincore.modified}</span>
                 </div>
                 <div id="tech-logo">
                     <canvas id="main-logo"></canvas>
@@ -168,14 +168,14 @@
             </header>
 
             <div id="main-title">
-                <h1>Petit salé aux lentilles - 300g</h1>
+                <h1>${doc.dublincore.title}</h1>
             </div>
 
             <div id="content">
 
                 <div class="column">
                     <div class="section">
-                        <img id="main-picture" src="https://az826390.vo.msecnd.net/cdn/media/home/inspiring_recipes/recipes/new_-_f/filet-de-sebaste-tomates-olives-1160x650-bs001138-pub-67290-01.ashx?la=fr&mw=1160&w=1160&hash=10B181B79BD9F9011A08F61E1561D76B07DAD4A1">
+                        <img id="main-picture" src="${blobHolder.getBlobUrl(1)}">
                     </div>
                     <div class="section">
                         <h5>Valeurs nutritionnelles</h5>
@@ -237,7 +237,13 @@
                         </table>
                     </div>
                     <div class="section">
-                        <img id="nutriscore" src="https://www.bfmtv.com/static/nxt-bfmtv/evenement/nutri-score/a.jpg"/>
+                        <h5>Nutriscore</h5>
+                        <#if doc.kNutriscore.letter>
+                            <#assign letter = "_"+doc.kNutriscore.letter >
+                        <#else>
+                            <#assign letter = "" >
+                        </#if>
+                        <img class="nutriscore" src="http://localhost:8080/nuxeo/ui/images/nutriscore/nutriscore${letter}.png"/>
                     </div>
                     <div class="section">
                         <h5>Allégations nutritionnelles</h5>
@@ -250,7 +256,7 @@
                 <div class="column">
                     <div class="section">
                         <h5>Description</h5>
-                        <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu dictum magna. Donec dictum commodo dolor, eget fermentum metus molestie nec. Maecenas vulputate non neque et congue. Vivamus magna velit, ultrices eu vehicula at, facilisis at elit. Etiam vel blandit metus. Nunc in lectus nisi.</span>
+                        <span class="description">${doc.vItemGeneral.definition}</span>
                     </div>
                     <div class="section">
                         <h5>Ingrédients</h5>
