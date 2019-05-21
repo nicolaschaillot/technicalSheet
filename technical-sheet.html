@@ -107,6 +107,7 @@
                 margin-bottom: 40px;
                 color: var(--font-primary-color);
                 font-size: 14px;
+                page-break-inside: avoid;
             }
             .description {
                 font-size: 13px;
@@ -250,7 +251,7 @@
                         <h5>Allégations nutritionnelles</h5>
                         <ul>
                             <#list doc.vItemLabeling.nutritionalClaimDeclaration as claim>
-                            <li>${claim.translation} (${claim.lang})</li>
+                            <li>${claim.translation} (${fn.getVocabularyTranslatedLabel("language",claim.lang,"fr_FR")})</li>
                             </#list>
                         </ul>
                     </div>
@@ -263,42 +264,74 @@
                     </div>
                     <div class="section">
                         <h5>Ingrédients</h5>
-                        <#list doc.vItemLabeling.ingredientsList as ingredients>
-                        <span>${ingredients.translation}</span>
-                        </#list>
+                        <ul>
+                            <#list doc.vItemLabeling.ingredientsList as ingredients>
+                            <li>${ingredients.translation}</li>
+                            </#list>
+                        </ul>
                     </div>
                     <div class="section">
                         <h5>Allergènes</h5>
-                        <span class="ingredients">Peut contenir du blé et des traces de fruits à coque</span>
+                        <ul>
+                            <#list doc.vItemLabeling.allergenDeclarationPi as allergens>
+                            <li>${allergens.translation}</li>
+                            </#list>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <h5>Paramètres organoleptiques</h5>
+                        <table id="val-nut">
+                            <tbody>
+                                <#if doc.vItemCaracteristics.odor.value>
+                                <tr>
+                                    <td>Odeur</td>
+                                    <td>${doc.vItemCaracteristics.odor.value!""}</td>
+                                </tr>
+                                </#if>
+                                <#if doc.vItemCaracteristics.color.value>
+                                <tr>
+                                    <td>Couleur</td>
+                                    <td>${doc.vItemCaracteristics.color.value!""}</td>
+                                </tr>
+                                </#if>
+                                <#if doc.vItemCaracteristics.taste.value>
+                                <tr>
+                                    <td>Goût</td>
+                                    <td>${doc.vItemCaracteristics.taste.value!""}</td>
+                                </tr>
+                                </#if>
+                                <#if doc.vItemCaracteristics.texture.value>
+                                <tr>
+                                    <td>Texture</td>
+                                    <td>${doc.vItemCaracteristics.texture.value!""}</td>
+                                </tr>
+                                </#if>
+                                <#if doc.vItemCaracteristics.appearance.value>
+                                <tr>
+                                    <td>Apparence</td>
+                                    <td>${doc.vItemCaracteristics.appearance.value!""}</td>
+                                </tr>
+                                </#if>
+                                <#if doc.vItemCaracteristics.attributes.value>
+                                <tr>
+                                    <td>Attributs</td>
+                                    <td>${doc.vItemCaracteristics.attributes.value!""}</td>
+                                </tr>
+                                </#if>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="section">
                         <h5>Paramètres physico-chimiques</h5>
                         <table id="val-nut">
                             <tbody>
-                                <tr>
-                                    <td>Odeur</td>
-                                    <td>Sent mauvais</td>
-                                </tr>
-                                <tr>
-                                    <td>Couleur</td>
-                                    <td>Vert pâle</td>
-                                </tr>
-                                <tr>
-                                    <td>Goût</td>
-                                    <td>tip top</td>
-                                </tr>
-                                <tr>
-                                    <td>Texture</td>
-                                    <td>Tout mou</td>
-                                </tr>
-                                <tr>
-                                    <td>Apparence</td>
-                                    <td>Pas terrible</td>
-                                </tr>
-                                <tr>
-                                    <td>Attributs</td>
-                                    <td>Att</td>
-                                </tr>
+                                <#list doc.kPhyChes.characteristics as characteristic>
+                                    <tr>
+                                        <td>${plimfunctions.getI18nVocabularyLabel("kPhyChes",characteristic.name,"fr")}</td>
+                                        <td>${characteristic.value}</td>
+                                        <td>${plimfunctions.getUnitTranslatedLabel(characteristic.unit,"fr")}</td>
+                                    </tr>
+                                </#list>
                             </tbody>
                         </table>
                     </div>
