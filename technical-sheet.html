@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8"/>
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
-        
+
         <style type="text/css">
             body {
                 --primary-color: #005571;
@@ -54,7 +54,7 @@
             }
             #tech-title .title {
                 font-size: 12px;
-                color: var(--primary-color);
+                color: var(--secondary-color);
                 font-weight: bold;
                 text-transform: uppercase;
                 margin-bottom: 5px;
@@ -79,11 +79,6 @@
                 font-weight: bold;
                 text-transform: uppercase;
             }
-            #main-title h2 {
-                font-size: 16px;
-                color: var(--font-secondary-color);
-                font-weight: normal;
-            }
 
             /** CONTENT */
             #content {
@@ -97,9 +92,47 @@
                 display: flex;
                 flex-direction: column;
             }
-            #main-picture img {
+            #main-picture {
                 width: 95%;
-                height: 200px; 
+                height: 200px;
+            }
+            h5 {
+                font-size: 16px;
+                font-weight: bold;
+                color: var(--secondary-color);
+                margin-top: 0;
+                margin-bottom: 15px;
+            }
+            .section {
+                margin-bottom: 40px;
+                color: var(--font-primary-color);
+            }
+            .description {
+                font-size: 13px;
+                color: var(--font-secondary-color);
+                font-weight: normal;
+            }
+            #nutriscore {}
+
+            table#val-nut {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            table#val-nut th {
+                height: 25px;
+                color: var(--font-secondary-color);
+                font-weight: 100;
+                font-size: 12px;
+                text-align: right;
+            }
+            table#val-nut tr {
+                height: 28px;
+                font-weight: normal;
+                font-size: 12px;
+            }
+            table#val-nut td {
+                border-bottom: 1px solid #8E8E8E;
+                text-align: right;
             }
 
             /** FOOTER */
@@ -136,19 +169,138 @@
 
             <div id="main-title">
                 <h1>Petit salé aux lentilles - 300g</h1>
-                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at purus ut nunc dapibus luctus</h2>
             </div>
 
             <div id="content">
 
                 <div class="column">
-                    <div id="main-picture">
-                        <img src="https://az826390.vo.msecnd.net/cdn/media/home/inspiring_recipes/recipes/new_-_f/filet-de-sebaste-tomates-olives-1160x650-bs001138-pub-67290-01.ashx?la=fr&mw=1160&w=1160&hash=10B181B79BD9F9011A08F61E1561D76B07DAD4A1">
+                    <div class="section">
+                        <img id="main-picture" src="https://az826390.vo.msecnd.net/cdn/media/home/inspiring_recipes/recipes/new_-_f/filet-de-sebaste-tomates-olives-1160x650-bs001138-pub-67290-01.ashx?la=fr&mw=1160&w=1160&hash=10B181B79BD9F9011A08F61E1561D76B07DAD4A1">
+                    </div>
+                    <div class="section">
+                        <h5>Valeurs nutritionnelles</h5>
+                        <table id="val-nut">
+                            <thead>
+                                <tr>
+                                    <th>Valeurs nutritionnelles</th>
+                                    <th>Pour 100g</th>
+                                    <th>Par portion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Energie (kJ)</td>
+                                    <td>22</td>
+                                    <td>134</td>
+                                </tr>
+                                <tr>
+                                    <td>Energie (kcal)</td>
+                                    <td>220</td>
+                                    <td>1340</td>
+                                </tr>
+                                <tr>
+                                    <td>Matières grasses</td>
+                                    <td>22</td>
+                                    <td>134</td>
+                                </tr>
+                                <tr>
+                                    <td>dont acides gras saturés</td>
+                                    <td>22</td>
+                                    <td>134</td>
+                                </tr>
+                                <tr>
+                                    <td>Glucides</td>
+                                    <td>22</td>
+                                    <td>134</td>
+                                </tr>
+                                <tr>
+                                    <td>dont sucres</td>
+                                    <td>22</td>
+                                    <td>134</td>
+                                </tr>
+                                <tr>
+                                    <td>Fibres alimentaires</td>
+                                    <td>22</td>
+                                    <td>134</td>
+                                </tr>
+                                <tr>
+                                    <td>Protéines</td>
+                                    <td>22</td>
+                                    <td>134</td>
+                                </tr>
+                                <tr>
+                                    <td>Sel</td>
+                                    <td>22</td>
+                                    <td>134</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="section">
+                        <img id="nutriscore" src="https://www.bfmtv.com/static/nxt-bfmtv/evenement/nutri-score/a.jpg"/>
+                    </div>
+                    <div class="section">
+                        <h5>Allégations nutritionnelles</h5>
+                        <ul>
+                            <li>Riche en fibre</li>
+                        </ul>
                     </div>
                 </div>
 
                 <div class="column">
-                    Secondary column
+                    <div class="section">
+                        <h5>Description</h5>
+                        <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu dictum magna. Donec dictum commodo dolor, eget fermentum metus molestie nec. Maecenas vulputate non neque et congue. Vivamus magna velit, ultrices eu vehicula at, facilisis at elit. Etiam vel blandit metus. Nunc in lectus nisi.</span>
+                    </div>
+                    <div class="section">
+                        <h5>Ingrédients</h5>
+                        <span class="ingredients">Sauce béchamel 22,2% : eau, margarine (huile de colza, eau, émulsifiant : mono et diglycéride d'acides gras, sel, acidifiant : acide citrique, arôme, colorant : bêta carotène),
+                            <b>farine de blé</b>, poudre de lait écrémé, sel, macis. Pâte 17,2% :
+                            <b>semoule de blé dur</b>,
+                            <b>œufs</b>
+                            (22%), eau.</span>
+                        <br/><br/>
+                        <span class="ingredients">Bechamel sauce 22.2%: water, margarine (rapeseed oil, water, emulsifier: mono and diglycerides of fatty acids, salt, acidifier: citric acid, flavoring, coloring: beta carotene),
+                            <b>wheat flour</b>, skimmed milk powder salt, mace. 17.2% dough:
+                            <b>durum wheat semolina</b>,
+                            <b>eggs</b>
+                            (22%), water.</span>
+                    </div>
+                    <div class="section">
+                        <h5>Allergènes</h5>
+                        <span class="ingredients">Peut contenir du blé et des traces de fruits à coque</span>
+                    </div>
+                    <div class="section">
+                        <h5>Paramètres physico-chimiques</h5>
+                        <table id="val-nut">
+                            <tbody>
+                                <tr>
+                                    <td>Odeur</td>
+                                    <td>Sent mauvais</td>
+                                </tr>
+                                <tr>
+                                    <td>Couleur</td>
+                                    <td>Vert pâle</td>
+                                </tr>
+                                <tr>
+                                    <td>Goût</td>
+                                    <td>tip top</td>
+                                </tr>
+                                <tr>
+                                    <td>Texture</td>
+                                    <td>Tout mou</td>
+                                </tr>
+                                <tr>
+                                    <td>Apparence</td>
+                                    <td>Pas terrible</td>
+                                </tr>
+                                <tr>
+                                    <td>Attributs</td>
+                                    <td>Att</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
             </div>
@@ -188,9 +340,9 @@
                     randomRGB(0, 255);
                     var posX = 0;
                     var posY = 0;
-                    var startFillRed = 0; //colorArray[0];
-                    var startFillGreen = 121; //colorArray[1];
-                    var startFillBlue = 165; //colorArray[2];
+                    var startFillRed = 0; // colorArray[0];
+                    var startFillGreen = 121; // colorArray[1];
+                    var startFillBlue = 165; // colorArray[2];
                     var colorRange = 5;
                     ctx.fillStyle = "rgb(" + startFillRed + "," + startFillGreen + "," + startFillBlue + ")";
 
