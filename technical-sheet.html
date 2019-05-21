@@ -144,7 +144,7 @@
                 text-align: center;
                 color: var(--font-on-dark-bg);
                 font: normal 10px Helvetica, Sans-Serif;
-                letter-spacing: 5px;
+                letter-spacing: 3px;
                 padding: 8px 0;
             }
         </style>
@@ -190,48 +190,48 @@
                             <tbody>
                                 <tr>
                                     <td>Energie (kJ)</td>
-                                    <td>22</td>
-                                    <td>134</td>
+                                    <td>${doc.vNutrients.kJEnergy.average!""}</td>
+                                    <td>${doc.vNutrients.kJEnergy.valuePerServing!""}</td>
                                 </tr>
                                 <tr>
                                     <td>Energie (kcal)</td>
-                                    <td>220</td>
-                                    <td>1340</td>
+                                    <td>${doc.vNutrients.kcalEnergy.average!""}</td>
+                                    <td>${doc.vNutrients.kcalEnergy.valuePerServing!""}</td>
                                 </tr>
                                 <tr>
                                     <td>Matières grasses</td>
-                                    <td>22</td>
-                                    <td>134</td>
+                                    <td>${doc.vNutrients.lipids.average!""}</td>
+                                    <td>${doc.vNutrients.lipids.valuePerServing!""}</td>
                                 </tr>
                                 <tr>
-                                    <td>dont acides gras saturés</td>
-                                    <td>22</td>
-                                    <td>134</td>
+                                    <td><i>dont acides gras saturés</i></td>
+                                    <td>${doc.vNutrients.saturated.average!""}</td>
+                                    <td>${doc.vNutrients.saturated.valuePerServing!""}</td>
                                 </tr>
                                 <tr>
                                     <td>Glucides</td>
-                                    <td>22</td>
-                                    <td>134</td>
+                                    <td>${doc.vNutrients.carbohydrates.average!""}</td>
+                                    <td>${doc.vNutrients.carbohydrates.valuePerServing!""}</td>
                                 </tr>
                                 <tr>
-                                    <td>dont sucres</td>
-                                    <td>22</td>
-                                    <td>134</td>
+                                    <td><i>dont sucres</i></td>
+                                    <td>${doc.vNutrients.sugar.average!""}</td>
+                                    <td>${doc.vNutrients.sugar.valuePerServing!""}</td>
                                 </tr>
                                 <tr>
                                     <td>Fibres alimentaires</td>
-                                    <td>22</td>
-                                    <td>134</td>
+                                    <td>${doc.vNutrients.fibers.average!""}</td>
+                                    <td>${doc.vNutrients.fibers.valuePerServing!""}</td>
                                 </tr>
                                 <tr>
                                     <td>Protéines</td>
-                                    <td>22</td>
-                                    <td>134</td>
+                                    <td>${doc.vNutrients.proteins.average!""}</td>
+                                    <td>${doc.vNutrients.proteins.valuePerServing!""}</td>
                                 </tr>
                                 <tr>
                                     <td>Sel</td>
-                                    <td>22</td>
-                                    <td>134</td>
+                                    <td>${doc.vNutrients.saltEq.average!""}</td>
+                                    <td>${doc.vNutrients.saltEq.valuePerServing!""}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -312,7 +312,7 @@
             </div>
 
             <footer>
-                Cooked by Keendoo SAS - 2019
+                Cooked by Keendoo - 2019
             </footer>
 
         </page>
