@@ -106,7 +106,7 @@
             .section {
                 margin-bottom: 40px;
                 color: var(--font-primary-color);
-                font-size: 16px;
+                font-size: 14px;
             }
             .description {
                 font-size: 13px;
@@ -146,6 +146,7 @@
                 font: normal 10px Helvetica, Sans-Serif;
                 letter-spacing: 3px;
                 padding: 8px 0;
+                bottom: 0;
             }
         </style>
         <title>${doc.dublincore.title}</title>
@@ -248,7 +249,9 @@
                     <div class="section">
                         <h5>Allégations nutritionnelles</h5>
                         <ul>
-                            <li>Riche en fibre</li>
+                            <#list doc.vItemLabeling.nutritionalClaimDeclaration as claim>
+                            <li>${claim.translation} (${claim.lang})</li>
+                            </#list>
                         </ul>
                     </div>
                 </div>
@@ -260,17 +263,9 @@
                     </div>
                     <div class="section">
                         <h5>Ingrédients</h5>
-                        <span class="ingredients">Sauce béchamel 22,2% : eau, margarine (huile de colza, eau, émulsifiant : mono et diglycéride d'acides gras, sel, acidifiant : acide citrique, arôme, colorant : bêta carotène),
-                            <b>farine de blé</b>, poudre de lait écrémé, sel, macis. Pâte 17,2% :
-                            <b>semoule de blé dur</b>,
-                            <b>œufs</b>
-                            (22%), eau.</span>
-                        <br/><br/>
-                        <span class="ingredients">Bechamel sauce 22.2%: water, margarine (rapeseed oil, water, emulsifier: mono and diglycerides of fatty acids, salt, acidifier: citric acid, flavoring, coloring: beta carotene),
-                            <b>wheat flour</b>, skimmed milk powder salt, mace. 17.2% dough:
-                            <b>durum wheat semolina</b>,
-                            <b>eggs</b>
-                            (22%), water.</span>
+                        <#list doc.vItemLabeling.ingredientsList as ingredients>
+                        <span>${ingredients.translation}</span>
+                        </#list>
                     </div>
                     <div class="section">
                         <h5>Allergènes</h5>
