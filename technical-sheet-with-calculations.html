@@ -149,6 +149,64 @@
                 padding: 8px 0;
                 bottom: 0;
             }
+            /** GRID */
+            #grid td,
+            #grid th {
+                border: 1px solid rgb(190, 190, 190);
+                padding: 5px;
+            }
+
+            #grid td {
+                text-align: left;
+            }
+
+            #grid tr:nth-child(even) {
+                background-color: #eee;
+            }
+
+            #grid th[scope="col"] {
+                background-color: #696969;
+                color: #fff;
+            }
+
+            #grid th[scope="row"] {
+                background-color: #d7d9f2;
+            }
+
+            #grid caption {
+                padding: 5px;
+                caption-side: bottom;
+            }
+
+            #grid table {
+                border-collapse: collapse;
+                border: 2px solid rgb(200, 200, 200);
+                letter-spacing: 1px;
+                font-size: .7rem;
+            }
+            .qtylabel {
+                font-size: .7rem;
+                font-weight: bold;
+                color: var(--primary-color);
+            }
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+            /* Firefox */
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
+            input[type=number] {
+                background-color: var(--secondary-color);
+                color: white;
+                border: none;
+                margin-bottom: 1rem;
+                height: 25px;
+                width: 80px;
+            }
         </style>
         <title>${doc.dublincore.title}</title>
     </head>
@@ -323,17 +381,24 @@
                     </div>
                     <div class="section">
                         <h5>Paramètres physico-chimiques</h5>
-                        <table id="val-nut">
-                            <tbody>
-                                <#list doc.kPhyChes.characteristics as characteristic>
+                        <div id="grid">
+                            <label for="name" class="qtylabel">Quantité à préparer (en kg) :</label>
+                            <input type="number" id="qtytouse" name="qty" required minlength="4" maxlength="8" size="10">
+                            <table id="foo" class="editabletable" border="1">
+                                <tr>
+                                  <th><div>Dénomination des ingrédients</div></th>
+                                  <th><div>Poids net (kg)</div></th>
+                                </tr>
+                                <#list doc.vReceipe.components as ingredient>
+                                    <#if ingredient.lineType == "foodComponent">
                                     <tr>
-                                        <td>${plimfunctions.getI18nVocabularyLabel("kPhyChes",characteristic.name,"fr")}</td>
-                                        <td>${characteristic.value}</td>
-                                        <td>${plimfunctions.getUnitTranslatedLabel(characteristic.unit,"fr")}</td>
+                                        <td><div>${ingredient.label}</div></td>
+                                        <td><div>${ingredient.sfQty}</div></td>
                                     </tr>
+                                    </#if>
                                 </#list>
-                            </tbody>
-                        </table>
+                              </table>
+                        </div>
                     </div>
                 </div>
 
@@ -348,6 +413,24 @@
     </body>
 
     <script type="text/javascript">
+
+        qtytouse.addEventListener("input", function (e) {
+            const table = document.getElementById("foo");
+            let index = 0;
+            let qty = [];
+            <#list doc.vReceipe.components as ingredient>
+                <#if ingredient.lineType == "foodComponent">
+                    index++;
+                    qty[index] = parseFloat('${ingredient.sfQty}'.replace(/,/g, '.'));
+                    if (this.value!=='undefined' && this.value!=='') {
+                        table.rows[index].cells[1].innerHTML = qty[index] * this.value;
+                    } else {
+                        table.rows[index].cells[1].innerHTML = qty[index];
+                    }
+                </#if>
+            </#list>
+        });
+
         function draw() { // grain is basically level of detail. higher = finer.
             var grain = 5;
             var blockout = Math.random();
